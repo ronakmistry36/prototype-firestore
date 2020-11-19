@@ -18,3 +18,11 @@ app.get('/', async (request, response) => {
     const users = await userRepository.findAll();
     response.send(users);
 });
+
+
+app.get('/users/:id', async (request, response) => {
+    const userRepository = new UserRepository();
+    const user = await userRepository.findById(request.params.id)
+    response.send(user);
+});
+

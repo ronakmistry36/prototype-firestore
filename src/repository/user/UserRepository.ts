@@ -1,4 +1,5 @@
 import * as firebaseAdmin from "firebase-admin";
+import {UserEntity} from "../../entity/UserEntity";
 
 export class UserRepository {
 
@@ -10,7 +11,7 @@ export class UserRepository {
 
     public async findAll() {
         const documents = await this.userFireStore.get();
-        let users = [];
+        let users: UserEntity[] = [];
         documents.forEach((document) => {
             users.push({
                 id: document.id,
@@ -19,5 +20,13 @@ export class UserRepository {
         })
 
         return users;
+    }
+
+    public async findById(id: string) {
+        const document = await this.userFireStore.doc(id).get();
+        return {
+            id: document.id,
+            ...document.data()
+        }
     }
 }
