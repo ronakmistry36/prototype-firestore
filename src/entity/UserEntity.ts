@@ -1,6 +1,3 @@
-export interface UserEntity {
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-}
+import {User} from "../domain/User";
+
+export interface UserEntity extends User {}

@@ -18,7 +18,10 @@ app.get('/', async (request, response) => {
     const users = await firestore.collection('users').get();
     let payload = [];
     users.forEach((doc) => {
-        payload.push(doc.data())
+        payload.push({
+            id: doc.id,
+            ...doc.data()
+        })
     })
     response.send(payload);
 });
