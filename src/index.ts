@@ -33,8 +33,8 @@ app.get('/users/:id', async (request, response) => {
 app.post('/users', async (request, response) => {
     const userRepository = new UserRepository();
     const userEntity = request.body as UserEntity;
-    const user = await userRepository.save(userEntity);
-    response.send(user);
+    await userRepository.save(userEntity);
+    response.send("saved");
 });
 
 app.delete('/users/:id', async (request, response) => {

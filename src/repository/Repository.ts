@@ -1,7 +1,7 @@
-export interface Repository<Entity, EntityName> {
+export interface Repository<Entity> {
     deleteById(id: string): void;
     delete(entity: Entity): void;
-    findAll(): Entity[];
-    findById(id: string): Entity;
-    save(entity: Entity): Entity;
+    findAll(): Promise<Entity[]>;
+    findById(id: string): Promise<Entity>;
+    save(entity: Entity): Promise<Entity>;
 }
