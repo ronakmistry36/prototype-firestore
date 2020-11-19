@@ -3,10 +3,9 @@ import * as bodyParser from "body-parser";
 import * as firebaseAdmin from 'firebase-admin';
 import {UserRepository} from "./repository/user/UserRepository";
 import {UserEntity} from "./entity/UserEntity";
-import {response} from "express";
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 const serviceAccount = require('../firestore-key.json');

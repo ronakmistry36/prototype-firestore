@@ -10,11 +10,11 @@ export abstract class FirestoreAbstractRepository<Entity> implements Repository<
     }
 
     delete(entity: Entity): void {
-       try {
-           this.entityFirestore.doc(entity).delete();
-       } catch (error) {
-           console.log(error);
-       }
+        try {
+            this.entityFirestore.doc(entity).delete();
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     deleteById(id: string): void {
@@ -31,7 +31,7 @@ export abstract class FirestoreAbstractRepository<Entity> implements Repository<
                 const documents = await this.entityFirestore.get();
                 let entities = [];
                 documents.forEach((document) => {
-                    entities.push({ id: document.id, ...document.data() });
+                    entities.push({id: document.id, ...document.data()});
                 });
                 resolve(entities);
             } catch (error) {
@@ -42,15 +42,15 @@ export abstract class FirestoreAbstractRepository<Entity> implements Repository<
 
     findById(id: string): Promise<Entity> {
         return new Promise<Entity>(async (resolve, reject) => {
-           try {
-               const document = await this.entityFirestore.doc(id).get();
-               resolve({
-                   id: document.id,
-                   ...document.data()
-               });
-           } catch (error) {
-               reject(error);
-           }
+            try {
+                const document = await this.entityFirestore.doc(id).get();
+                resolve({
+                    id: document.id,
+                    ...document.data()
+                });
+            } catch (error) {
+                reject(error);
+            }
         });
     }
 
