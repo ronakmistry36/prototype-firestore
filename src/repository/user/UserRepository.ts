@@ -29,4 +29,11 @@ export class UserRepository {
             ...document.data()
         }
     }
+
+    public async save(userEntity: UserEntity) {
+        console.log({ userEntity });
+        return await this.userFireStore.doc().set({
+            ...userEntity
+        });
+    }
 }
