@@ -64,5 +64,4 @@ export abstract class FirestoreAbstractRepository<Entity> implements Repository<
             }
         });
     }
-
 }
