@@ -33,11 +33,11 @@ app.post('/users', async (request, response) => {
     const userRepository = new UserRepository();
     const userEntity = request.body as UserEntity;
     await userRepository.save(userEntity);
-    response.send("saved");
+    response.send("Saved");
 });
 
 app.delete('/users/:id', async (request, response) => {
     const userRepository = new UserRepository();
-    const user = await userRepository.deleteById(request.params.id)
-    response.send(user);
+    await userRepository.deleteById(request.params.id)
+    response.send("Deleted");
 });

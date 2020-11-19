@@ -54,14 +54,11 @@ export abstract class FirestoreAbstractRepository<Entity> implements Repository<
         });
     }
 
-    save(entity: Entity): Promise<Entity> {
-        return new Promise<Entity>(async (resolve, reject) => {
-            try {
-                const savedEntity = await this.entityFirestore.doc().set(entity);
-                resolve(savedEntity);
-            } catch (error) {
-                reject(error);
-            }
-        });
+    save(entity: Entity): void {
+        try {
+            this.entityFirestore.doc().set(entity);
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

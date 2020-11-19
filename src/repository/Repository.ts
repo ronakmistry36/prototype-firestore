@@ -7,5 +7,5 @@ export interface Repository<Entity> {
 
     findById(id: string): Promise<Entity>;
 
-    save(entity: Entity): Promise<Entity>;
+    save(entity: Entity): void;
 }
