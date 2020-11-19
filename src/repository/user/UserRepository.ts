@@ -31,9 +31,12 @@ export class UserRepository {
     }
 
     public async save(userEntity: UserEntity) {
-        console.log({ userEntity });
         return await this.userFireStore.doc().set({
             ...userEntity
         });
+    }
+
+    public async deleteById(id: string) {
+        return await this.userFireStore.doc(id).delete();
     }
 }
